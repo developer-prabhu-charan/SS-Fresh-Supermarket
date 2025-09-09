@@ -383,7 +383,7 @@ const Checkout = () => {
                     </Select>
                     {formData.paymentMethod === 'qr' && (
                       <div className="mt-4 flex flex-col items-center">
-                        <img src="/public/prabhu_QR_code.svg" alt="QR Code" className="w-32 h-32" />
+                        <img src="https://res.cloudinary.com/dcsnthbsa/image/upload/v1757452270/lshwngycld6rchwnil1g.jpg" alt="QR Code" className="w-32 h-32" />
                         <span className="text-sm mt-2">Scan to pay</span>
                       </div>
                     )}
