@@ -43,13 +43,13 @@ const sendTelegramNotification = async (order) => {
   try {
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
     const chatId = process.env.TELEGRAM_CHAT_ID;
-    
+
     // Check if both credentials are set
     if (!botToken || !chatId) {
       console.warn('Telegram bot credentials not configured. Skipping notification.');
       return;
     }
-    
+
     // Construct the list of items for the message
     const itemsList = (order.products || []).map(p => {
         // Use optional chaining for safe access
@@ -59,6 +59,9 @@ const sendTelegramNotification = async (order) => {
         return `- ${name} (Qty: ${p.quantity}) - ₹${total.toFixed(2)}`;
     }).join('\n');
 
+    // ⭐ KEY CHANGE: Add the maps link to the message
+    const mapsLink = order.location?.mapsLink ? `[View on Google Maps](${order.location.mapsLink})` : '';
+
     const message = `
 🛒 *NEW ORDER RECEIVED*
 *Order ID:* \`${order._id}\`
@@ -67,17 +70,18 @@ const sendTelegramNotification = async (order) => {
 *Total Amount:* ₹${(order.total || 0).toFixed(2)}
 *Payment Method:* ${order.paymentMethod === 'cod' ? 'Cash on Delivery' : 'Pay via QR Code'}
 *Address:* ${order.address || 'N/A'}
+*Location:* ${order.location?.city || 'N/A'} ${mapsLink}
 
 *Items:*
 ${itemsList || 'No items listed'}
     `;
-    
+
     await axios.post(`https://api.telegram.org/bot${botToken}/sendMessage`, {
       chat_id: chatId,
       text: message,
       parse_mode: 'Markdown'
     });
-    
+
     console.log('Telegram notification sent successfully.');
   } catch (error) {
     console.error('Failed to send Telegram notification:', error.message);
