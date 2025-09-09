@@ -88,7 +88,10 @@ ${itemsList || 'No items listed'}
   }
 };
 
-
+// Server Heaalth
+app.get('/api/health', (req, res) => {
+  res.json({ status: "ok", message: "Backend is live 🚀" });
+});
 
 
 // Product CRUD
