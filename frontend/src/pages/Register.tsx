@@ -10,6 +10,8 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { Separator } from '@/components/ui/separator';
 import { useLanguage } from '@/context/LanguageContext';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const Register = () => {
   const { t } = useLanguage();
   const [showPassword, setShowPassword] = useState(false);
@@ -35,7 +37,7 @@ const Register = () => {
       alert('Passwords do not match');
       return;
     }
-    fetch('http://localhost:5000/api/customers', {
+    fetch(`${API_BASE_URL}/api/customers`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)

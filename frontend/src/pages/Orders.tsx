@@ -6,6 +6,8 @@ import { Button } from '@/components/ui/button';
 import { useLanguage } from '@/context/LanguageContext';
 import { useAuth } from '@/context/AuthContext';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const Orders = () => {
   const { t } = useLanguage();
 
@@ -31,7 +33,7 @@ const Orders = () => {
     const load = async () => {
       if (!user) return setOrders([]);
       try {
-        const res = await fetch('http://localhost:5000/api/customers/' + (user.id || '') + '/orders', {
+        const res = await fetch(`${API_BASE_URL}/api/customers/` + (user.id || '') + '/orders', {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (!res.ok) return;

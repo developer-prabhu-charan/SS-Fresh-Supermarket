@@ -180,19 +180,19 @@ const Products = ({ searchQuery: propSearchQuery, onSearch }: { searchQuery: str
               <CardContent className="p-0">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   {/* Categories */}
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
                     {categories.map((category) => (
                       <Button
                         key={category}
                         variant={selectedCategory === category ? 'default' : 'outline'}
                         size="sm"
                         onClick={() => setSelectedCategory(category)}
+                        className="whitespace-nowrap"
                       >
-                        {category === 'all' ? 'All Categories' : category}
+                        {category === 'all' ? 'All' : category}
                       </Button>
                     ))}
                   </div>
-
                   {/* Controls */}
                   <div className="flex items-center gap-4">
                     {/* Sort */}
@@ -313,7 +313,7 @@ const Products = ({ searchQuery: propSearchQuery, onSearch }: { searchQuery: str
             <div
               className={
                 viewMode === 'grid'
-                  ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6'
+                  ? 'grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4'
                   : 'space-y-4'
               }
             >

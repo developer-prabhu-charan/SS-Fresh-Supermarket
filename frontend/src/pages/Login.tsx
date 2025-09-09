@@ -11,6 +11,8 @@ import { useLanguage } from '@/context/LanguageContext';
 import { useAuth } from '@/context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 const Login = () => {
   const { t } = useLanguage();
   const [showPassword, setShowPassword] = useState(false);
@@ -24,7 +26,7 @@ const Login = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    fetch('http://localhost:5000/api/login', {
+    fetch(`${API_BASE_URL}/api/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ identifier: formData.identifier, password: formData.password })

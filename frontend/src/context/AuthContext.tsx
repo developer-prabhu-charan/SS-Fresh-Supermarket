@@ -1,3 +1,5 @@
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
@@ -21,7 +23,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const init = async () => {
       if (!token) return setUser(null);
       try {
-        const res = await fetch('http://localhost:5000/api/me', {
+        const res = await fetch(`${API_BASE_URL}/api/me`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (!res.ok) {

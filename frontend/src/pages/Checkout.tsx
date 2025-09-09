@@ -14,6 +14,8 @@ import { useAuth } from '@/context/AuthContext';
 import { useLanguage } from '@/context/LanguageContext';
 import { useLocation } from '@/hooks/useLocation';
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
 // Free shipping threshold constant
 const FREE_SHIPPING_THRESHOLD = 99;
 
@@ -79,7 +81,7 @@ const Checkout = () => {
     lookupTimer.current = setTimeout(async () => {
       try {
         setLookupLoading(true);
-        const res = await fetch(`http://localhost:5000/api/customers/lookup?phone=${encodeURIComponent(phone)}`);
+        const res = await fetch(`${API_BASE_URL}/api/customers/lookup?phone=${encodeURIComponent(phone)}`);
         if (res.ok) {
           const data = await res.json();
           if (data.name) setFormData(prev => ({ ...prev, name: data.name }));
@@ -155,7 +157,7 @@ const Checkout = () => {
       const headers: Record<string, string> = { 'Content-Type': 'application/json' };
       if (token) headers.Authorization = `Bearer ${token}`;
 
-      const response = await fetch('http://localhost:5000/api/orders', {
+      const response = await fetch(`${API_BASE_URL}/api/orders`, {
         method: 'POST',
         headers,
         body: JSON.stringify(orderData)
