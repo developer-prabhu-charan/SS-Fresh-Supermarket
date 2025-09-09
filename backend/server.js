@@ -88,12 +88,6 @@ ${itemsList || 'No items listed'}
   }
 };
 
-// Server Heaalth
-app.get('/api/health', (req, res) => {
-  res.json({ status: "ok", message: "Backend is live 🚀" });
-});
-
-
 // Product CRUD
 app.post('/api/products', async (req, res) => {
   try {
@@ -151,6 +145,11 @@ app.patch('/api/products/:id', async (req, res) => {
     console.error('Product update failed:', err);
     res.status(500).json({ error: 'Failed to update product' });
   }
+});
+
+// Health check
+app.get("/api/health", (req, res) => {
+  res.json({ status: "ok", message: "Backend is live 🚀" });
 });
 
 // Add PUT route for full product updates (admin dashboard)
