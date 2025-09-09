@@ -1,0 +1,142 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Professional Admin Dashboard Design System - All colors MUST be HSL */
+
+@layer base {
+  :root {
+    /* Core Background & Text */
+    --background: 220 13% 97%;
+    --foreground: 220 16% 15%;
+
+    /* Card & Surface Colors */
+    --card: 0 0% 100%;
+    --card-foreground: 220 16% 15%;
+    --card-hover: 220 8% 98%;
+
+    /* Popover Colors */
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 16% 15%;
+
+    /* Primary Brand Colors - Professional Blue */
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 98%;
+    --primary-hover: 221 83% 48%;
+    --primary-light: 221 100% 95%;
+
+    /* Secondary Colors */
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 220 16% 15%;
+    --secondary-hover: 220 14% 91%;
+
+    /* Muted Colors */
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    /* Accent Colors */
+    --accent: 220 14% 96%;
+    --accent-foreground: 220 16% 15%;
+
+    /* Status Colors */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* Border & Input */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 221 83% 53%;
+
+    /* Sidebar Colors */
+    --sidebar-background: 220 24% 8%;
+    --sidebar-foreground: 220 9% 85%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 220 20% 12%;
+    --sidebar-accent-foreground: 220 9% 85%;
+    --sidebar-border: 220 20% 16%;
+    --sidebar-ring: 221 83% 53%;
+
+    /* Chart Colors */
+    --chart-1: 221 83% 53%;
+    --chart-2: 142 76% 36%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 271 91% 65%;
+    --chart-5: 0 84% 60%;
+
+    /* Gradient Backgrounds */
+    --gradient-primary: linear-gradient(135deg, hsl(221 83% 53%), hsl(262 83% 58%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(158 76% 36%));
+    --gradient-warning: linear-gradient(135deg, hsl(38 92% 50%), hsl(45 92% 50%));
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(220 13% 91% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(220 13% 91% / 0.1), 0 2px 4px -2px hsl(220 13% 91% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(220 13% 91% / 0.1), 0 4px 6px -4px hsl(220 13% 91% / 0.1);
+
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    /* Dark mode colors - keeping minimal for focus on light mode */
+    --background: 220 24% 8%;
+    --foreground: 220 9% 85%;
+    --card: 220 20% 12%;
+    --card-foreground: 220 9% 85%;
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 98%;
+    --border: 220 20% 16%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .metric-card {
+    @apply bg-card border border-border rounded-lg p-6 shadow-dashboard-md hover:shadow-dashboard-lg transition-all duration-200;
+  }
+  
+  .status-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .status-pending {
+    @apply bg-warning/10 text-warning border border-warning/20;
+  }
+  
+  .status-shipped {
+    @apply bg-primary/10 text-primary border border-primary/20;
+  }
+  
+  .status-delivered {
+    @apply bg-success/10 text-success border border-success/20;
+  }
+
+  .data-table {
+    @apply w-full border-collapse rounded-lg overflow-hidden shadow-dashboard-sm;
+  }
+
+  .data-table th {
+    @apply bg-muted/50 px-4 py-3 text-left text-sm font-medium text-muted-foreground border-b border-border;
+  }
+
+  .data-table td {
+    @apply px-4 py-3 text-sm border-b border-border last:border-b-0;
+  }
+
+  .data-table tr {
+    @apply hover:bg-card-hover transition-colors;
+  }
+}

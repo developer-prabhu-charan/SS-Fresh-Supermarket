@@ -1,0 +1,201 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* E-commerce Design System: Green/Black/White Theme */
+
+@layer base {
+  :root {
+    /* Light theme - Clean white background with green accents */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+
+    /* Primary Green - E-commerce brand color */
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 142 76% 31%;
+    --primary-light: 142 76% 45%;
+
+    /* Secondary - Subtle green tints */
+    --secondary: 142 30% 96%;
+    --secondary-foreground: 142 76% 20%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 142 45% 92%;
+    --accent-foreground: 142 76% 25%;
+
+    /* Status colors for e-commerce */
+    --success: 120 60% 40%;
+    --success-foreground: 0 0% 100%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders and inputs */
+    --border: 0 0% 90%;
+    --input: 0 0% 96%;
+    --ring: 142 76% 36%;
+
+    /* E-commerce specific colors */
+    --price: 142 76% 36%;
+    --discount: 0 84% 60%;
+    --stock-low: 38 92% 50%;
+    --stock-out: 0 84% 60%;
+    --stock-available: 120 60% 40%;
+
+    --radius: 0.5rem;
+
+    /* Gradients for hero sections and CTAs */
+    --gradient-primary: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(142 76% 36%) 0%, hsl(142 76% 25%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%) 0%, hsl(142 30% 98%) 100%);
+
+    /* Shadows */
+    --shadow-card: 0 4px 6px -1px hsl(0 0% 0% / 0.1);
+    --shadow-card-hover: 0 10px 15px -3px hsl(0 0% 0% / 0.1);
+    --shadow-primary: 0 4px 14px 0 hsl(142 76% 36% / 0.3);
+
+    /* Animation timings */
+    --transition-fast: 0.2s ease-out;
+    --transition-normal: 0.3s ease-out;
+    --transition-slow: 0.5s ease-out;
+  }
+
+  .dark {
+    /* Dark theme - Pure black with green accents */
+    --background: 0 0% 3%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 6%;
+    --popover-foreground: 0 0% 95%;
+
+    /* Brighter green for dark mode visibility */
+    --primary: 142 76% 45%;
+    --primary-foreground: 0 0% 8%;
+    --primary-hover: 142 76% 50%;
+    --primary-light: 142 76% 55%;
+
+    --secondary: 0 0% 10%;
+    --secondary-foreground: 0 0% 80%;
+
+    --muted: 0 0% 8%;
+    --muted-foreground: 0 0% 55%;
+
+    --accent: 0 0% 12%;
+    --accent-foreground: 142 76% 45%;
+
+    /* Status colors adjusted for dark mode */
+    --success: 120 60% 50%;
+    --success-foreground: 0 0% 8%;
+    --warning: 38 92% 60%;
+    --warning-foreground: 0 0% 8%;
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 8%;
+
+    --border: 0 0% 15%;
+    --input: 0 0% 10%;
+    --ring: 142 76% 45%;
+
+    /* E-commerce colors for dark mode */
+    --price: 142 76% 45%;
+    --discount: 0 84% 65%;
+    --stock-low: 38 92% 60%;
+    --stock-out: 0 84% 65%;
+    --stock-available: 120 60% 50%;
+
+    /* Dark mode gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(142 76% 45%), hsl(142 76% 55%));
+    --gradient-hero: linear-gradient(135deg, hsl(142 76% 40%) 0%, hsl(142 76% 30%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 6%) 0%, hsl(0 0% 8%) 100%);
+
+    /* Dark mode shadows */
+    --shadow-card: 0 4px 6px -1px hsl(0 0% 0% / 0.3);
+    --shadow-card-hover: 0 10px 15px -3px hsl(0 0% 0% / 0.4);
+    --shadow-primary: 0 4px 14px 0 hsl(142 76% 45% / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* E-commerce specific utility classes */
+  .price-text {
+    @apply text-[hsl(var(--price))] font-semibold;
+  }
+
+  .discount-text {
+    @apply text-[hsl(var(--discount))] font-medium;
+  }
+
+  .stock-available {
+    @apply text-[hsl(var(--stock-available))];
+  }
+
+  .stock-low {
+    @apply text-[hsl(var(--stock-low))];
+  }
+
+  .stock-out {
+    @apply text-[hsl(var(--stock-out))];
+  }
+
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-card-hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .shadow-primary {
+    box-shadow: var(--shadow-primary);
+  }
+
+  .transition-fast {
+    transition: var(--transition-fast);
+  }
+
+  .transition-normal {
+    transition: var(--transition-normal);
+  }
+
+  .transition-slow {
+    transition: var(--transition-slow);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
